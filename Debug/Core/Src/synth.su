@@ -1,0 +1,6 @@
+../Core/Src/synth.c:5:10:float2uint16_t	16	static
+../Core/Src/synth.c:15:6:Synth_Init	8	static
+../Core/Src/synth.c:20:6:Synth_Play	8	static
+../Core/Src/synth.c:24:13:UpdateAudioBuffer	24	static
+../Core/Src/synth.c:57:6:HAL_I2S_TxHalfCpltCallback	16	static
+../Core/Src/synth.c:61:6:HAL_I2S_TxCpltCallback	16	static
