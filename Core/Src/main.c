@@ -108,6 +108,7 @@ int main(void)
 
   HAL_GPIO_WritePin(LED_BLUE_GPIO_Port, LED_BLUE_Pin, GPIO_PIN_SET);
 
+  int8_t wasClicked = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -121,8 +122,13 @@ int main(void)
 	// turn off the codec when button is pressed
 	if (HAL_GPIO_ReadPin(PUSH_BUTTON_GPIO_Port, PUSH_BUTTON_Pin)) {
 //		Codec_Stop();
-		Wavetable_NoteOff(&wavetable);
-		Wavetable_NoteOn(&wavetable, 1500);
+		if (!wasClicked) {
+//			Wavetable_NoteOff(&wavetable);
+			Wavetable_NoteOn(&wavetable, wavetable.pitch_hz + 20);
+			wasClicked = 1;
+		}
+	} else {
+		wasClicked = 0;
 	}
   }
   /* USER CODE END 3 */

@@ -6,12 +6,12 @@
 #include <stdint.h>
 
 #define SAMPLE_RATE 48000
-#define WAVETABLE_LEN 256
+#define WAVETABLE_LEN 4048
 #define WAVE_SINE 0
 
 typedef struct {
 	uint8_t wave;
-	uint8_t active;
+	// uint8_t active;
 	float phase;
 	float d_phase;
 	float pitch_hz;
