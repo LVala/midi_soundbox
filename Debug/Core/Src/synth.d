@@ -1,4 +1,5 @@
-Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
+Core/Src/synth.o: ../Core/Src/synth.c ../Core/Inc/synth.h \
+ ../Core/Inc/i2s.h ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -28,9 +29,10 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
- ../Core/Inc/codec.h ../Core/Inc/i2c.h ../Core/Inc/main.h \
- ../Core/Inc/synth.h ../Core/Inc/i2s.h ../Core/Inc/wavetable.h \
- ../Core/Inc/dma.h ../Core/Inc/i2c.h ../Core/Inc/i2s.h ../Core/Inc/gpio.h
+ ../Core/Inc/codec.h ../Core/Inc/i2c.h ../Core/Inc/synth.h \
+ ../Core/Inc/wavetable.h
+../Core/Inc/synth.h:
+../Core/Inc/i2s.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -63,11 +65,5 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Core/Inc/codec.h:
 ../Core/Inc/i2c.h:
-../Core/Inc/main.h:
 ../Core/Inc/synth.h:
-../Core/Inc/i2s.h:
 ../Core/Inc/wavetable.h:
-../Core/Inc/dma.h:
-../Core/Inc/i2c.h:
-../Core/Inc/i2s.h:
-../Core/Inc/gpio.h:

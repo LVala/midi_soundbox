@@ -3,23 +3,23 @@
 
 #define VOLUME_CONVERT(Volume) (((Volume) > 100)? 255:((uint8_t)(((Volume) * 255) / 100)))
 
-I2C_HandleTypeDef hi2c;
 static uint8_t is_codec_stopped = 1;
 
 uint8_t Codec_Write(uint8_t reg, uint8_t val) {
   HAL_StatusTypeDef status = HAL_OK;
 
-  status = HAL_I2C_Mem_Write(&hi2c, CODEC_I2C_ADDR, reg, I2C_MEMADD_SIZE_8BIT, &val, 1, I2C_MAX_TIMEOUT);
+  status = HAL_I2C_Mem_Write(&hi2c1, CODEC_I2C_ADDR, reg, I2C_MEMADD_SIZE_8BIT, &val, 1, I2C_MAX_TIMEOUT);
 
   return status != HAL_OK ? 1 : 0;
 }
 
-uint32_t Codec_Init(I2C_HandleTypeDef i2c_handle) {
+uint32_t Codec_Init() {
+  // expects I2C already initialized
+
   uint32_t counter = 0;
 
   // power on the codec (possibely need to turn it off first)
   HAL_GPIO_WritePin(CODEC_RESET_GPIO_Port, CODEC_RESET_Pin, GPIO_PIN_SET);
-  hi2c = i2c_handle;
 
   // keep codec powered off
   counter += Codec_Write(CODEC_REG_POWER_CTL1, 0x01);
@@ -28,7 +28,7 @@ uint32_t Codec_Init(I2C_HandleTypeDef i2c_handle) {
   // cloc configuration: auto detection
   counter += Codec_Write(CODEC_REG_CLOCKING_CTL, 0x81);
   // set slave mode and audio standard
-  counter += Codec_Write(CODEC_REG_INTERFACE_CTL1, CODEC_STANDARD);
+  counter += Codec_Write(CODEC_REG_INTERFACE_CTL1, 0x07);
   // set master volume to 0
   counter += Codec_SetVolume(0);
 

@@ -3,6 +3,7 @@
 
 
 #include "stm32f4xx_hal.h"
+#include "i2c.h"
 
 #define CODEC_STANDARD 0x04
 
@@ -61,7 +62,7 @@
 #define   CODEC_REG_THERMAL_FOLDBACK    0x33
 #define   CODEC_REG_CHARGE_PUMP_FREQ    0x34
 
-uint32_t Codec_Init(I2C_HandleTypeDef i2c_handle);
+uint32_t Codec_Init();
 uint32_t Codec_Play();
 uint32_t Codec_Stop();
 uint32_t Codec_SetVolume(uint8_t volume);
