@@ -1,5 +1,5 @@
-synth.c:11:6:Synth_Init	2
-synth.c:19:6:Synth_Play	1
-synth.c:23:13:UpdateAudioBuffer	5
-synth.c:49:6:HAL_I2S_TxHalfCpltCallback	1
-synth.c:53:6:HAL_I2S_TxCpltCallback	1
+synth.c:14:6:Synth_Init	2
+synth.c:22:6:Synth_Play	1
+synth.c:26:13:UpdateAudioBuffer	5
+synth.c:52:6:HAL_I2S_TxHalfCpltCallback	1
+synth.c:56:6:HAL_I2S_TxCpltCallback	1
