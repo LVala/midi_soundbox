@@ -102,7 +102,6 @@ int main(void)
   if (counter) {
     Error_Handler();
   }
-
   Synth_Init();
   Synth_Play();
 
@@ -113,6 +112,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+
   while (1)
   {
     /* USER CODE END WHILE */
@@ -123,8 +123,9 @@ int main(void)
 	if (HAL_GPIO_ReadPin(PUSH_BUTTON_GPIO_Port, PUSH_BUTTON_Pin)) {
 //		Codec_Stop();
 		if (!wasClicked) {
-//			Wavetable_NoteOff(&wavetable);
-			Wavetable_NoteOn(&wavetable, wavetable.pitch_hz + 20);
+			//
+
+			//
 			wasClicked = 1;
 		}
 	} else {

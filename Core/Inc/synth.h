@@ -7,9 +7,9 @@
 #include "stm32f4xx_hal.h"
 #include "wavetable.h"
 
-extern Wavetable_State wavetable;
-
-#define AUDIO_BUFFER_FRAMES   256
+#define POLY_MAX 2
+// temp 256
+#define AUDIO_BUFFER_FRAMES   128
 #define AUDIO_BUFFER_CHANNELS 2
 #define AUDIO_BUFFER_SAMPLES AUDIO_BUFFER_FRAMES * AUDIO_BUFFER_CHANNELS
 

@@ -8,6 +8,7 @@
 #define SAMPLE_RATE 48000
 #define WAVETABLE_LEN 4048
 #define WAVE_SINE 0
+#define WAVE_SAW 1
 
 typedef struct {
 	uint8_t wave;
