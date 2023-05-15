@@ -1,0 +1,2 @@
+../Core/Src/midi.c:11:6:start_midi	8	static
+../Core/Src/midi.c:17:6:USBH_MIDI_ReceiveCallback	24	static
