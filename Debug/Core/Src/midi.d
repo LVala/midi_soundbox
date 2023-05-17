@@ -1,4 +1,5 @@
-Core/Src/midi.o: ../Core/Src/midi.c ../USB_HOST/App/usb_host.h \
+Core/Src/midi.o: ../Core/Src/midi.c ../Core/Inc/midi.h \
+ ../USB_HOST/App/usb_host.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h \
  ../Drivers/CMSIS/Include/core_cm4.h \
@@ -28,12 +29,10 @@ Core/Src/midi.o: ../Core/Src/midi.c ../USB_HOST/App/usb_host.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
- ../Core/Inc/main.h ../Core/Inc/codec.h ../Core/Inc/i2c.h \
- ../Core/Inc/main.h ../Core/Inc/synth.h ../Core/Inc/i2s.h \
- ../Core/Inc/wavetable.h ../Core/Inc/midi.h \
- ../Core/Src/../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h \
+ ../Core/Inc/../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h \
  ../USB_HOST/Target/usbh_conf.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h \
@@ -41,7 +40,13 @@ Core/Src/midi.o: ../Core/Src/midi.c ../USB_HOST/App/usb_host.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h \
- ../Core/Src/../../Drivers/USBH_midi_class/Inc/../../BSP/STM32F4-Discovery/stm32f4_discovery.h
+ ../Core/Inc/../../Drivers/USBH_midi_class/Inc/../../BSP/STM32F4-Discovery/stm32f4_discovery.h \
+ ../Core/Inc/main.h ../Core/Inc/codec.h ../Core/Inc/i2c.h \
+ ../Core/Inc/main.h ../Core/Inc/synth.h ../Core/Inc/i2s.h \
+ ../Core/Inc/wavetable.h ../Core/Inc/midi.h ../Core/Inc/dbgu.h \
+ ../Core/Inc/ansi.h ../Core/Inc/term_io.h \
+ ../USB_HOST/Target/usbh_platform.h
+../Core/Inc/midi.h:
 ../USB_HOST/App/usb_host.h:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f411xe.h:
@@ -72,8 +77,18 @@ Core/Src/midi.o: ../Core/Src/midi.c ../USB_HOST/App/usb_host.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
+../Core/Inc/../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h:
+../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h:
+../USB_HOST/Target/usbh_conf.h:
+../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h:
+../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ioreq.h:
+../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h:
+../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h:
+../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h:
+../Core/Inc/../../Drivers/USBH_midi_class/Inc/../../BSP/STM32F4-Discovery/stm32f4_discovery.h:
 ../Core/Inc/main.h:
 ../Core/Inc/codec.h:
 ../Core/Inc/i2c.h:
@@ -82,12 +97,7 @@ Core/Src/midi.o: ../Core/Src/midi.c ../USB_HOST/App/usb_host.h \
 ../Core/Inc/i2s.h:
 ../Core/Inc/wavetable.h:
 ../Core/Inc/midi.h:
-../Core/Src/../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h:
-../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h:
-../USB_HOST/Target/usbh_conf.h:
-../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_def.h:
-../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ioreq.h:
-../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h:
-../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_pipes.h:
-../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h:
-../Core/Src/../../Drivers/USBH_midi_class/Inc/../../BSP/STM32F4-Discovery/stm32f4_discovery.h:
+../Core/Inc/dbgu.h:
+../Core/Inc/ansi.h:
+../Core/Inc/term_io.h:
+../USB_HOST/Target/usbh_platform.h:

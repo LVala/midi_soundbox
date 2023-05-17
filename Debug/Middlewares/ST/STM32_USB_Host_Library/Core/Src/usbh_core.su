@@ -10,7 +10,7 @@
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c:420:21:USBH_Stop	16	static
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c:442:20:USBH_ReEnumerate	16	static
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c:473:21:USBH_Process	40	static
-../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c:843:27:USBH_HandleEnum	40	static
+../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c:844:27:USBH_HandleEnum	40	static
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c:1182:7:USBH_LL_SetTimer	16	static
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c:1194:7:USBH_LL_IncTimer	16	static
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Src/usbh_core.c:1207:14:USBH_HandleSof	16	static

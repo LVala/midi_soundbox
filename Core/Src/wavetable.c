@@ -3,7 +3,7 @@
 float sine_wavetable[WAVETABLE_LEN];
 static uint8_t wavetables_initialized = 0;
 
-static void sineWavetableInit() {
+static void SineWavetableInit() {
   float d_phase = (2.0f * (float)M_PI) / WAVETABLE_LEN;
   float phase = 0;
   for (uint16_t i = 0; i < WAVETABLE_LEN; i++) {
@@ -14,7 +14,7 @@ static void sineWavetableInit() {
 
 void Wavetable_Init(Wavetable_State *state, uint8_t wave) {
   if (!wavetables_initialized) {
-    sineWavetableInit();
+    SineWavetableInit();
   }
 
   state->wave = wave;

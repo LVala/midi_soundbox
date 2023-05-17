@@ -75,7 +75,6 @@ USBH_ClassTypeDef  MIDI_Class =
  */
 static USBH_StatusTypeDef USBH_MIDI_InterfaceInit (USBH_HandleTypeDef *phost)
 {	
-
 	USBH_StatusTypeDef status = USBH_FAIL ;
 	uint8_t interface = 0;
 	MIDI_HandleTypeDef *MIDI_Handle;

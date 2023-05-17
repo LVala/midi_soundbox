@@ -21,13 +21,12 @@
 #include "dma.h"
 #include "i2c.h"
 #include "i2s.h"
+#include "usart.h"
 #include "usb_host.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "usbh_platform.h"
-#include "../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h"
 
 /* USER CODE END Includes */
 
@@ -48,7 +47,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-extern USBH_HandleTypeDef hUsbHostFS;
 extern ApplicationTypeDef Appli_state;
 
 /* USER CODE END PV */
@@ -73,7 +71,6 @@ void MX_USB_HOST_Process(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-  ApplicationTypeDef last_Appli_state = Appli_state;
 
   /* USER CODE END 1 */
 
@@ -99,8 +96,13 @@ int main(void)
   MX_I2C1_Init();
   MX_I2S3_Init();
   MX_USB_HOST_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   MX_DriverVbusFS(0);
+
+  // TODO temporary
+  debug_init(&huart1);
+  xprintf(ANSI_BG_MAGENTA "\nMIDI_SOUNDBOX" ANSI_BG_DEFAULT "\n");
 
   uint8_t counter = 0;
 
@@ -112,11 +114,12 @@ int main(void)
   }
 
   Synth_Init();
-  Synth_Play();
+  if (Synth_Play() != 0) {
+	Error_Handler();
+  }
 
-  //HAL_GPIO_WritePin(LED_BLUE_GPIO_Port, LED_BLUE_Pin, GPIO_PIN_SET);
+  uint8_t midi_started = 0;
 
-  int8_t wasClicked = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -127,43 +130,13 @@ int main(void)
     MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
-      if (Appli_state == APPLICATION_DISCONNECT) {
-    	HAL_GPIO_WritePin(LED_BLUE_GPIO_Port, LED_BLUE_Pin, GPIO_PIN_RESET);
-    	HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
-    	HAL_GPIO_WritePin(LED_ORANGE_GPIO_Port, LED_ORANGE_Pin, GPIO_PIN_RESET);
-
-    	HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
-      } else if(Appli_state == APPLICATION_READY) {
-      	HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
-      	HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
-      	HAL_GPIO_WritePin(LED_ORANGE_GPIO_Port, LED_ORANGE_Pin, GPIO_PIN_RESET);
-
-		HAL_GPIO_WritePin(LED_BLUE_GPIO_Port, LED_BLUE_Pin, GPIO_PIN_SET);
-	  } else if (Appli_state == APPLICATION_IDLE) {
-	    HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
-	    HAL_GPIO_WritePin(LED_BLUE_GPIO_Port, LED_BLUE_Pin, GPIO_PIN_RESET);
-	    HAL_GPIO_WritePin(LED_ORANGE_GPIO_Port, LED_ORANGE_Pin, GPIO_PIN_RESET);
-
-	    HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
-	  } else if (Appli_state == APPLICATION_START) {
-	    HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
-	    HAL_GPIO_WritePin(LED_BLUE_GPIO_Port, LED_BLUE_Pin, GPIO_PIN_RESET);
-	    HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
-
-		HAL_GPIO_WritePin(LED_ORANGE_GPIO_Port, LED_ORANGE_Pin, GPIO_PIN_SET);
-	  }
-
-	// turn off the codec when button is pressed
-//	if (HAL_GPIO_ReadPin(PUSH_BUTTON_GPIO_Port, PUSH_BUTTON_Pin)) {
-////		Codec_Stop();
-//		if (!wasClicked) {
-////			Wavetable_NoteOff(&wavetable);
-//			Wavetable_NoteOn(&wavetable, wavetable.pitch_hz + 20);
-//			wasClicked = 1;
-//		}
-//	} else {
-//		wasClicked = 0;
-//	}
+    if (Appli_state == APPLICATION_READY && !midi_started) {
+      Midi_Start();
+      midi_started = 1;
+    } else if (Appli_state != APPLICATION_READY && midi_started) {
+      Midi_Stop();
+      midi_started = 0;
+    }
   }
   /* USER CODE END 3 */
 }
@@ -226,6 +199,7 @@ void Error_Handler(void)
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   HAL_GPIO_WritePin(LED_ORANGE_GPIO_Port, LED_ORANGE_Pin, GPIO_PIN_SET);
+  xprintf("ERROR!");
   __disable_irq();
   while (1)
   {

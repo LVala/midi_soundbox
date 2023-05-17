@@ -1,2 +1,4 @@
-midi.c:11:6:start_midi	1
-midi.c:17:6:USBH_MIDI_ReceiveCallback	3
+midi.c:12:6:Midi_Start	1
+midi.c:16:6:Midi_Stop	1
+midi.c:20:6:USBH_MIDI_ReceiveCallback	4
+midi.c:38:13:HandleMidi	3

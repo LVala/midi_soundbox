@@ -14,7 +14,7 @@ extern Wavetable_State wavetable;
 #define AUDIO_BUFFER_SAMPLES AUDIO_BUFFER_FRAMES * AUDIO_BUFFER_CHANNELS
 
 void Synth_Init();
-void Synth_Play();
+uint8_t Synth_Play();
 
 
 #endif

@@ -35,6 +35,9 @@ extern "C" {
 #include "synth.h"
 #include "wavetable.h"
 #include "midi.h"
+#include "dbgu.h"
+#include "term_io.h"
+#include "usbh_platform.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

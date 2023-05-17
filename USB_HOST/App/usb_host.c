@@ -23,9 +23,9 @@
 #include "usb_host.h"
 #include "usbh_core.h"
 #include "usbh_audio.h"
-#include "../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h"
 
 /* USER CODE BEGIN Includes */
+#include "../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h"
 
 /* USER CODE END Includes */
 

@@ -589,6 +589,7 @@ USBH_StatusTypeDef  USBH_Process(USBH_HandleTypeDef *phost)
     case HOST_ENUMERATION:
       /* Check for enumeration status */
       status = USBH_HandleEnum(phost);
+
       if (status == USBH_OK)
       {
         /* The function shall return USBH_OK when full enumeration is complete */
@@ -844,7 +845,6 @@ static USBH_StatusTypeDef USBH_HandleEnum(USBH_HandleTypeDef *phost)
 {
   USBH_StatusTypeDef Status = USBH_BUSY;
   USBH_StatusTypeDef ReqStatus = USBH_BUSY;
-
   switch (phost->EnumState)
   {
     case ENUM_IDLE:

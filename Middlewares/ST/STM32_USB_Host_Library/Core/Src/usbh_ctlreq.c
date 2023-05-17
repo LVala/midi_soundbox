@@ -401,6 +401,7 @@ static void  USBH_ParseDevDesc(USBH_DevDescTypeDef *dev_desc, uint8_t *buf,
   */
 static USBH_StatusTypeDef USBH_ParseCfgDesc(USBH_HandleTypeDef *phost, uint8_t *buf, uint16_t length)
 {
+
   USBH_CfgDescTypeDef *cfg_desc = &phost->device.CfgDesc;
   USBH_StatusTypeDef           status = USBH_OK;
   USBH_InterfaceDescTypeDef    *pif ;
@@ -452,12 +453,14 @@ static USBH_StatusTypeDef USBH_ParseCfgDesc(USBH_HandleTypeDef *phost, uint8_t *
 
         while ((ep_ix < pif->bNumEndpoints) && (ptr < cfg_desc->wTotalLength))
         {
+
           pdesc = USBH_GetNextDesc((uint8_t *)(void *)pdesc, &ptr);
 
           if (pdesc->bDescriptorType == USB_DESC_TYPE_ENDPOINT)
           {
             /* Check if the endpoint is appartening to an audio streaming interface */
-            if ((pif->bInterfaceClass == 0x01U) && (pif->bInterfaceSubClass == 0x02U))
+            if ((pif->bInterfaceClass == 0x01U) &&
+                ((pif->bInterfaceSubClass == 0x02U) || (pif->bInterfaceSubClass == 0x03U)))
             {
               /* Check if it is supporting the USB AUDIO 01 class specification */
               if ((pif->bInterfaceProtocol == 0x00U) && (pdesc->bLength != 0x09U))
@@ -664,6 +667,7 @@ USBH_DescHeader_t  *USBH_GetNextDesc(uint8_t   *pbuf, uint16_t  *ptr)
   *ptr += ((USBH_DescHeader_t *)(void *)pbuf)->bLength;
   pnext = (USBH_DescHeader_t *)(void *)((uint8_t *)(void *)pbuf + \
                                         ((USBH_DescHeader_t *)(void *)pbuf)->bLength);
+
 
   return (pnext);
 }

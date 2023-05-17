@@ -29,7 +29,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "main.h"
 
 #include "stm32f4xx.h"
 #include "stm32f4xx_hal.h"
@@ -83,7 +82,7 @@
 #define USBH_MAX_DATA_BUFFER      512U
 
 /*----------   -----------*/
-#define USBH_DEBUG_LEVEL      0U
+#define USBH_DEBUG_LEVEL      3U
 
 /*----------   -----------*/
 #define USBH_USE_OS      0U
