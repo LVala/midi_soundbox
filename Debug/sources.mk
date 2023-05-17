@@ -9,6 +9,7 @@ S_SRCS :=
 C_SRCS := 
 S_UPPER_SRCS := 
 O_SRCS := 
+CYCLO_FILES := 
 SIZE_OUTPUT := 
 OBJDUMP_LIST := 
 SU_FILES := 
@@ -23,5 +24,12 @@ C_DEPS :=
 SUBDIRS := \
 Core/Src \
 Core/Startup \
+Drivers/BSP/Components/cs43l22 \
+Drivers/BSP/STM32F4-Discovery \
 Drivers/STM32F4xx_HAL_Driver/Src \
+Drivers/USBH_midi_class/Src \
+Middlewares/ST/STM32_USB_Host_Library/Class/AUDIO/Src \
+Middlewares/ST/STM32_USB_Host_Library/Core/Src \
+USB_HOST/App \
+USB_HOST/Target \
 

@@ -9,7 +9,14 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include USB_HOST/Target/subdir.mk
+-include USB_HOST/App/subdir.mk
+-include Middlewares/ST/STM32_USB_Host_Library/Core/Src/subdir.mk
+-include Middlewares/ST/STM32_USB_Host_Library/Class/AUDIO/Src/subdir.mk
+-include Drivers/USBH_midi_class/Src/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
+-include Drivers/BSP/STM32F4-Discovery/subdir.mk
+-include Drivers/BSP/Components/cs43l22/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk

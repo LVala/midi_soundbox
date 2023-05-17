@@ -34,6 +34,10 @@ extern "C" {
 #include "codec.h"
 #include "synth.h"
 #include "wavetable.h"
+#include "midi.h"
+#include "dbgu.h"
+#include "term_io.h"
+#include "usbh_platform.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -69,6 +73,7 @@ void Error_Handler(void);
 #define LED_RED_GPIO_Port GPIOD
 #define LED_BLUE_Pin GPIO_PIN_15
 #define LED_BLUE_GPIO_Port GPIOD
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

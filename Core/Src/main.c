@@ -21,6 +21,8 @@
 #include "dma.h"
 #include "i2c.h"
 #include "i2s.h"
+#include "usart.h"
+#include "usb_host.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -45,19 +47,20 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+extern ApplicationTypeDef Appli_state;
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_USB_HOST_Process(void);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-//Sample rate and Output freq
 
 /* USER CODE END 0 */
 
@@ -92,7 +95,14 @@ int main(void)
   MX_DMA_Init();
   MX_I2C1_Init();
   MX_I2S3_Init();
+  MX_USB_HOST_Init();
+  MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  MX_DriverVbusFS(0);
+
+  // TODO temporary
+  debug_init(&huart1);
+  xprintf(ANSI_BG_MAGENTA "\nMIDI_SOUNDBOX" ANSI_BG_DEFAULT "\n");
 
   uint8_t counter = 0;
 
@@ -104,11 +114,12 @@ int main(void)
   }
 
   Synth_Init();
-  Synth_Play();
+  if (Synth_Play() != 0) {
+	Error_Handler();
+  }
 
-  HAL_GPIO_WritePin(LED_BLUE_GPIO_Port, LED_BLUE_Pin, GPIO_PIN_SET);
+  uint8_t midi_started = 0;
 
-  int8_t wasClicked = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -116,20 +127,16 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+    MX_USB_HOST_Process();
 
     /* USER CODE BEGIN 3 */
-
-	// turn off the codec when button is pressed
-	if (HAL_GPIO_ReadPin(PUSH_BUTTON_GPIO_Port, PUSH_BUTTON_Pin)) {
-//		Codec_Stop();
-		if (!wasClicked) {
-//			Wavetable_NoteOff(&wavetable);
-			Wavetable_NoteOn(&wavetable, wavetable.pitch_hz + 20);
-			wasClicked = 1;
-		}
-	} else {
-		wasClicked = 0;
-	}
+    if (Appli_state == APPLICATION_READY && !midi_started) {
+      Midi_Start();
+      midi_started = 1;
+    } else if (Appli_state != APPLICATION_READY && midi_started) {
+      Midi_Stop();
+      midi_started = 0;
+    }
   }
   /* USER CODE END 3 */
 }
@@ -192,6 +199,7 @@ void Error_Handler(void)
   /* USER CODE BEGIN Error_Handler_Debug */
   /* User can add his own implementation to report the HAL error return state */
   HAL_GPIO_WritePin(LED_ORANGE_GPIO_Port, LED_ORANGE_Pin, GPIO_PIN_SET);
+  xprintf("ERROR!");
   __disable_irq();
   while (1)
   {
