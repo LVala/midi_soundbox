@@ -15,6 +15,7 @@ extern Wavetable_State wavetable;
 
 void Synth_Init();
 uint8_t Synth_Play();
-
+void Synth_NoteOn(uint8_t midi_param0, uint8_t midi_param1);
+void Synth_NoteOff(uint8_t midi_param0, uint8_t midi_param1);
 
 #endif
