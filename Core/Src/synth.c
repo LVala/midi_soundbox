@@ -17,6 +17,17 @@ uint8_t Synth_Play() {
   return HAL_I2S_Transmit_DMA(&hi2s3, audio_buffer, AUDIO_BUFFER_SAMPLES);
 }
 
+void Synth_NoteOn(uint8_t midi_param0, uint8_t midi_param1) {
+  // TODO proper implementation
+  Wavetable_NoteOn(&wavetable, midi_param0);
+
+}
+
+void Synth_NoteOff(uint8_t midi_param0, uint8_t midi_param1) {
+  // TODO proper implementation
+  Wavetable_NoteOff(&wavetable, midi_param0);
+}
+
 static void UpdateAudioBuffer(uint32_t start_frame, uint32_t end_frame) {
   // start_frame is inclusive, end_frame exclusive
   static float buffer[AUDIO_BUFFER_SAMPLES];

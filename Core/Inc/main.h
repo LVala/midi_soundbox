@@ -33,7 +33,6 @@ extern "C" {
 /* USER CODE BEGIN Includes */
 #include "codec.h"
 #include "synth.h"
-#include "wavetable.h"
 #include "midi.h"
 #include "dbgu.h"
 #include "term_io.h"

@@ -1,6 +1,4 @@
 #include "midi.h"
-//TODO remove
-#include "main.h"
 
 #define RX_BUFF_SIZE 64
 
@@ -14,7 +12,7 @@ void Midi_Start(void) {
 }
 
 void Midi_Stop(void) {
-
+  USBH_MIDI_Stop(&hUsbHostFS);
 }
 
 void USBH_MIDI_ReceiveCallback(USBH_HandleTypeDef *phost) {
@@ -38,9 +36,10 @@ void USBH_MIDI_ReceiveCallback(USBH_HandleTypeDef *phost) {
 static void HandleMidi(uint8_t midi_cmd, uint8_t midi_param0, uint8_t midi_param1) {
   switch (midi_cmd & 0xf0) {
   case 0x80:
-	xprintf("NOTE OFF\n");
+	Synth_NoteOff(midi_param0, midi_param1);
 	break;
   case 0x90:
-	xprintf("NOTE ON\n");
+	Synth_NoteOn(midi_param0, midi_param1);
+	break;
   }
 }
