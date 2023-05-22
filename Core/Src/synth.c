@@ -8,8 +8,15 @@ float sample_N;
 uint16_t base = 16000;
 uint16_t scaled_base = 16000 / POLY_MAX;
 
-// temporary, single voice
 Wavetable_State wavetables[POLY_MAX];
+
+void Synth_Key_Press() {
+	Wavetable_SetActive(&wavetables[0], 1);
+}
+
+void Synth_Key_Release() {
+	Wavetable_SetActive(&wavetables[0], 0);
+}
 
 void Synth_Init() {
   for(int note = 0; note<POLY_MAX; note++) {

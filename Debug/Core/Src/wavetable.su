@@ -1,6 +1,7 @@
 ../Core/Src/wavetable.c:7:13:sawWavetableInit	48	static
 ../Core/Src/wavetable.c:20:13:sineWavetableInit	32	static
 ../Core/Src/wavetable.c:29:6:Wavetable_Init	16	static
-../Core/Src/wavetable.c:46:6:Wavetable_NoteOn	16	static
-../Core/Src/wavetable.c:53:6:Wavetable_NoteOff	16	static
-../Core/Src/wavetable.c:60:6:Wavetable_GetSamples	32	static
+../Core/Src/wavetable.c:48:6:Wavetable_NoteOn	16	static
+../Core/Src/wavetable.c:55:6:Wavetable_NoteOff	16	static
+../Core/Src/wavetable.c:62:6:Wavetable_GetSamples	32	static
+../Core/Src/wavetable.c:82:6:Wavetable_SetActive	16	static

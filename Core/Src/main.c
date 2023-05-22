@@ -57,7 +57,7 @@ void SystemClock_Config(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-//Sample rate and Output freq
+// HERE
 
 /* USER CODE END 0 */
 
@@ -121,15 +121,15 @@ int main(void)
 
 	// turn off the codec when button is pressed
 	if (HAL_GPIO_ReadPin(PUSH_BUTTON_GPIO_Port, PUSH_BUTTON_Pin)) {
-//		Codec_Stop();
 		if (!wasClicked) {
 			//
-
+			Synth_Key_Press();
 			//
 			wasClicked = 1;
 		}
 	} else {
 		wasClicked = 0;
+		Synth_Key_Release();
 	}
   }
   /* USER CODE END 3 */

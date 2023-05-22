@@ -1,6 +1,7 @@
 wavetable.c:7:13:sawWavetableInit	4
 wavetable.c:20:13:sineWavetableInit	2
 wavetable.c:29:6:Wavetable_Init	3
-wavetable.c:46:6:Wavetable_NoteOn	1
-wavetable.c:53:6:Wavetable_NoteOff	1
-wavetable.c:60:6:Wavetable_GetSamples	3
+wavetable.c:48:6:Wavetable_NoteOn	1
+wavetable.c:55:6:Wavetable_NoteOff	1
+wavetable.c:62:6:Wavetable_GetSamples	4
+wavetable.c:82:6:Wavetable_SetActive	1

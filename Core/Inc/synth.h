@@ -7,7 +7,8 @@
 #include "stm32f4xx_hal.h"
 #include "wavetable.h"
 
-#define POLY_MAX 4
+//#define POLY_MAX 4
+#define POLY_MAX 1
 #define AUDIO_BUFFER_FRAMES   256
 
 #define AUDIO_BUFFER_CHANNELS 2
