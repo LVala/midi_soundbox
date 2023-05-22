@@ -1,8 +1,8 @@
-adsr.c:14:6:adsr_init	1
-adsr.c:24:6:adsr_reset	1
-adsr.c:33:6:adsr_note_on	1
-adsr.c:43:6:adsr_note_off	2
-adsr.c:53:6:adsr_get_samples	2
-adsr.c:70:14:get_sample	6
-adsr.c:123:8:adsr_active	5
-adsr.c:143:8:adsr_releasing	1
+adsr.c:6:6:adsr_init	1
+adsr.c:16:6:adsr_reset	1
+adsr.c:25:6:adsr_note_on	1
+adsr.c:35:6:adsr_note_off	2
+adsr.c:45:6:adsr_get_samples	2
+adsr.c:62:14:get_sample	6
+adsr.c:115:8:adsr_active	5
+adsr.c:135:8:adsr_releasing	1

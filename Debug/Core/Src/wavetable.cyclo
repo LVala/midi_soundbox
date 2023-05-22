@@ -4,4 +4,4 @@ wavetable.c:29:6:Wavetable_Init	3
 wavetable.c:48:6:Wavetable_NoteOn	1
 wavetable.c:55:6:Wavetable_NoteOff	1
 wavetable.c:62:6:Wavetable_GetSamples	3
-wavetable.c:76:6:Wavetable_SetActive	1
+wavetable.c:77:6:Wavetable_SetActive	1

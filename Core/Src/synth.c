@@ -12,18 +12,18 @@ Wavetable_State wavetables[POLY_MAX];
 
 float synth_time = 0.0; // synthesizer clock for adsr
 
-void Synth_Key_Press() {
-	Wavetable_SetActive(&wavetables[0], 1);
-	if(0 == adsr_active(&(&wavetables[0])->adsr_state, synth_time)) {
-		adsr_note_on(&(&wavetables[0])->adsr_state, 127.0, synth_time);
+void Synth_Key_Press(int i) {
+	Wavetable_SetActive(&wavetables[i], 1);
+	if(0 == adsr_active(&(&wavetables[i])->adsr_state, synth_time)) {
+		adsr_note_on(&(&wavetables[i])->adsr_state, 127.0, synth_time);
 	}
 }
 
-void Synth_Key_Release() {
-//	Wavetable_SetActive(&wavetables[0], 0);
-	Wavetable_SetActive(&wavetables[0], 1);
-	if(1 != adsr_releasing(&(&wavetables[0])->adsr_state, synth_time)) {
-		adsr_note_off(&(&wavetables[0])->adsr_state, synth_time);
+void Synth_Key_Release(int i) {
+	Wavetable_SetActive(&wavetables[i], 0);
+//	Wavetable_SetActive(&wavetables[i], 1);
+	if(1 != adsr_releasing(&(&wavetables[i])->adsr_state, synth_time)) {
+		adsr_note_off(&(&wavetables[i])->adsr_state, synth_time);
 	}
 }
 
@@ -41,13 +41,15 @@ void Synth_Play() {
 
 static void UpdateAudioBuffer(uint32_t start_frame, uint32_t end_frame) {
   // start_frame is inclusive, end_frame exclusive
-  static float buffer[AUDIO_BUFFER_SAMPLES];
+  float buffer[AUDIO_BUFFER_SAMPLES];
   for(int i = 0; i<AUDIO_BUFFER_SAMPLES; i++) {buffer[i] = 0;}
-  static float _buffer[AUDIO_BUFFER_SAMPLES];
+  float _buffer[AUDIO_BUFFER_SAMPLES];
+  for(int i = 0; i<AUDIO_BUFFER_SAMPLES; i++) {_buffer[i] = 0;}
 
   for(int note = 0; note < POLY_MAX; note++) {
 	  Wavetable_GetSamples(&wavetables[note], _buffer, end_frame - start_frame);
-//	  adsr_get_samples(&(&wavetables[note])->adsr_state, _buffer, end_frame - start_frame, synth_time);
+	  adsr_get_samples(&(&wavetables[note])->adsr_state, _buffer, end_frame - start_frame, synth_time);
+
 	  for(int i = 0; i < end_frame - start_frame; i++) {
 		  buffer[2*i] += _buffer[2*i];
 		  buffer[2*i+1] += _buffer[2*i+1];

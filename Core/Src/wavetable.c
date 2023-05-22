@@ -71,6 +71,7 @@ void Wavetable_GetSamples(Wavetable_State *state, float *buffer, int num_frames)
 	  state->phase -= WAVETABLE_LEN;
 	}
   }
+
 }
 
 void Wavetable_SetActive(Wavetable_State *state, int active) {

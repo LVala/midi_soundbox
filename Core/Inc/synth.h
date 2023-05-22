@@ -7,8 +7,8 @@
 #include "stm32f4xx_hal.h"
 #include "wavetable.h"
 
-//#define POLY_MAX 4
-#define POLY_MAX 1
+#define POLY_MAX 2
+//#define POLY_MAX 1
 #define AUDIO_BUFFER_FRAMES   128
 
 #define AUDIO_BUFFER_CHANNELS 2
@@ -17,7 +17,7 @@
 void Synth_Init(void);
 void Synth_Play(void);
 
-void Synth_Key_Press(void);
-void Synth_Key_Release(void);
+void Synth_Key_Press(int i);
+void Synth_Key_Release(int i);
 
 #endif

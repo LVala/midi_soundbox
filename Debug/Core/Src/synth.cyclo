@@ -2,6 +2,6 @@ synth.c:15:6:Synth_Key_Press	2
 synth.c:22:6:Synth_Key_Release	2
 synth.c:30:6:Synth_Init	2
 synth.c:38:6:Synth_Play	1
-synth.c:42:13:UpdateAudioBuffer	5
-synth.c:69:6:HAL_I2S_TxHalfCpltCallback	1
-synth.c:74:6:HAL_I2S_TxCpltCallback	1
+synth.c:42:13:UpdateAudioBuffer	6
+synth.c:71:6:HAL_I2S_TxHalfCpltCallback	1
+synth.c:76:6:HAL_I2S_TxCpltCallback	1

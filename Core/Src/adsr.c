@@ -1,12 +1,4 @@
-/*
- * adsr.c
- *
- *  Created on: Jun 25, 2021
- *      Author: rallen
- */
-
 #include "adsr.h"
-//#include "synthutil.h"
 #include <stdio.h>
 
 float get_sample(adsr_state_t *self, float time);
