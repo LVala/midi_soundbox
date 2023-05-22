@@ -119,6 +119,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
+	Synth_Key_Press();
 	// turn off the codec when button is pressed
 	if (HAL_GPIO_ReadPin(PUSH_BUTTON_GPIO_Port, PUSH_BUTTON_Pin)) {
 		if (!wasClicked) {
@@ -129,7 +130,7 @@ int main(void)
 		}
 	} else {
 		wasClicked = 0;
-		Synth_Key_Release();
+//		Synth_Key_Release();
 	}
   }
   /* USER CODE END 3 */

@@ -50,7 +50,7 @@ void adsr_note_off(adsr_state_t *self, float time)
   self->release_amplitude = self->cur_amplitude;
 }
 
-void adsr_get_samples(adsr_state_t *self, float *inout_samples,int frame_count, float time)
+void adsr_get_samples(adsr_state_t *self, float *inout_samples, int frame_count, float time)
 {
   float cur_time = time;
   for(int frame = 0; frame < frame_count; frame++) {
@@ -60,7 +60,7 @@ void adsr_get_samples(adsr_state_t *self, float *inout_samples,int frame_count, 
     }
     inout_samples[2*frame]   *= sample_f;
     inout_samples[2*frame+1] *= sample_f;
-    cur_time = time + (float)frame/48000; //SAMPLE RATE / FRAME RATE
+    cur_time = time + (float)frame/48000; //SAMPLE RATE (or FRAME RATE)
   }
 }
 

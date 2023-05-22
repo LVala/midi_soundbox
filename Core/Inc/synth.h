@@ -9,13 +9,15 @@
 
 //#define POLY_MAX 4
 #define POLY_MAX 1
-#define AUDIO_BUFFER_FRAMES   256
+#define AUDIO_BUFFER_FRAMES   128
 
 #define AUDIO_BUFFER_CHANNELS 2
 #define AUDIO_BUFFER_SAMPLES AUDIO_BUFFER_FRAMES * AUDIO_BUFFER_CHANNELS
 
-void Synth_Init();
-void Synth_Play();
+void Synth_Init(void);
+void Synth_Play(void);
 
+void Synth_Key_Press(void);
+void Synth_Key_Release(void);
 
 #endif

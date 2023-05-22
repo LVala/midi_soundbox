@@ -64,17 +64,11 @@ void Wavetable_GetSamples(Wavetable_State *state, float *buffer, int num_frames)
   for (uint32_t i = 0; i<num_frames; i++) {
     sample = sine_wavetable[(uint32_t)state->phase];
 //	sample = saw_wavetable[(uint32_t)state->phase];
-	if(state->active == 1) {
-		buffer[2*i] = sample;
-		buffer[2*i+1] = sample;
-		state->phase += state->d_phase;
-		if (state->phase > WAVETABLE_LEN) {
-		  state->phase -= WAVETABLE_LEN;
-		}
-	}
-	else {
-		buffer[2*i] = 0;
-		buffer[2*i+1] = 0;
+	buffer[2*i] = sample;
+	buffer[2*i+1] = sample;
+	state->phase += state->d_phase;
+	if (state->phase > WAVETABLE_LEN) {
+	  state->phase -= WAVETABLE_LEN;
 	}
   }
 }
