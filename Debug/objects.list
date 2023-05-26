@@ -1,3 +1,4 @@
+"./Core/Src/adsr.o"
 "./Core/Src/codec.o"
 "./Core/Src/dbgu.o"
 "./Core/Src/dma.o"

@@ -44,7 +44,8 @@ Core/Src/synth.o: ../Core/Src/synth.c ../Core/Inc/synth.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_ctlreq.h \
  ../Core/Inc/../../Drivers/USBH_midi_class/Inc/../../BSP/STM32F4-Discovery/stm32f4_discovery.h \
  ../Core/Inc/dbgu.h ../Core/Inc/ansi.h ../Core/Inc/term_io.h \
- ../USB_HOST/Target/usbh_platform.h ../Core/Inc/wavetable.h
+ ../USB_HOST/Target/usbh_platform.h ../Core/Inc/wavetable.h \
+ ../Core/Inc/adsr.h
 ../Core/Inc/synth.h:
 ../Core/Inc/i2s.h:
 ../Core/Inc/main.h:
@@ -99,3 +100,4 @@ Core/Src/synth.o: ../Core/Src/synth.c ../Core/Inc/synth.h \
 ../Core/Inc/term_io.h:
 ../USB_HOST/Target/usbh_platform.h:
 ../Core/Inc/wavetable.h:
+../Core/Inc/adsr.h:
