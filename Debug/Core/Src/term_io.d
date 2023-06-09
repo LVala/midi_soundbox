@@ -33,8 +33,8 @@ Core/Src/term_io.o: ../Core/Src/term_io.c ../Core/Inc/term_io.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
  ../Core/Inc/codec.h ../Core/Inc/i2c.h ../Core/Inc/synth.h \
- ../Core/Inc/i2s.h ../Core/Inc/wavetable.h ../Core/Inc/midi.h \
- ../USB_HOST/App/usb_host.h \
+ ../Core/Inc/i2s.h ../Core/Inc/wavetable.h ../Core/Inc/adsr.h \
+ ../Core/Inc/midi.h ../USB_HOST/App/usb_host.h \
  ../Core/Inc/../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h \
  ../USB_HOST/Target/usbh_conf.h \
@@ -87,6 +87,7 @@ Core/Src/term_io.o: ../Core/Src/term_io.c ../Core/Inc/term_io.h \
 ../Core/Inc/synth.h:
 ../Core/Inc/i2s.h:
 ../Core/Inc/wavetable.h:
+../Core/Inc/adsr.h:
 ../Core/Inc/midi.h:
 ../USB_HOST/App/usb_host.h:
 ../Core/Inc/../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h:

@@ -9,12 +9,13 @@
 
 extern Wavetable_State wavetable;
 
-#define AUDIO_BUFFER_FRAMES   256
+#define POLY_MAX 3
+#define AUDIO_BUFFER_FRAMES   128
 #define AUDIO_BUFFER_CHANNELS 2
 #define AUDIO_BUFFER_SAMPLES AUDIO_BUFFER_FRAMES * AUDIO_BUFFER_CHANNELS
 
-void Synth_Init();
-uint8_t Synth_Play();
+void Synth_Init(void);
+uint8_t Synth_Play(void);
 void Synth_NoteOn(uint8_t midi_param0, uint8_t midi_param1);
 void Synth_NoteOff(uint8_t midi_param0, uint8_t midi_param1);
 

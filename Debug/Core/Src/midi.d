@@ -36,6 +36,7 @@ Core/Src/midi.o: ../Core/Src/midi.c ../Core/Inc/midi.h \
  ../Core/Inc/codec.h ../Core/Inc/i2c.h ../Core/Inc/midi.h \
  ../Core/Inc/dbgu.h ../Core/Inc/ansi.h ../Core/Inc/term_io.h \
  ../USB_HOST/Target/usbh_platform.h ../Core/Inc/wavetable.h \
+ ../Core/Inc/adsr.h \
  ../Core/Inc/../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h \
  ../USB_HOST/Target/usbh_conf.h \
@@ -90,6 +91,7 @@ Core/Src/midi.o: ../Core/Src/midi.c ../Core/Inc/midi.h \
 ../Core/Inc/term_io.h:
 ../USB_HOST/Target/usbh_platform.h:
 ../Core/Inc/wavetable.h:
+../Core/Inc/adsr.h:
 ../Core/Inc/../../Drivers/USBH_midi_class/Inc/usbh_MIDI.h:
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h:
 ../USB_HOST/Target/usbh_conf.h:

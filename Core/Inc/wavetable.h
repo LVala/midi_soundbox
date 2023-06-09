@@ -4,18 +4,20 @@
 
 #include <math.h>
 #include <stdint.h>
+#include "adsr.h"
 
 #define SAMPLE_RATE 48000
 #define WAVETABLE_LEN 4048
 #define WAVE_SINE 0
+#define WAVE_SAW 1
 
 typedef struct {
   uint8_t wave;
-  uint8_t active;
   float phase;
   float d_phase;
   int8_t pitch_midi;
   float pitch_hz;
+  ADSR_State adsr_state;
 } Wavetable_State;
 
 void Wavetable_Init(Wavetable_State *state, uint8_t wave);
