@@ -69,7 +69,7 @@ static void UpdateAudioBuffer(uint32_t start_frame, uint32_t end_frame) {
     float scaled = buffer[2*i] * scaled_base;
     uint16_t value = (uint16_t)(base + scaled);
 
-	audio_buffer[2*frame] = value;
+    audio_buffer[2*frame] = value;
     audio_buffer[2*frame+1] = value;
     i++;
   }
